@@ -1,5 +1,5 @@
 import { Accordion, Avatar, Button, Flex, Group, Modal, NumberInput, Select, Switch, Tabs, Text, TextInput, Textarea, Title, Tooltip, useMantineTheme } from "@mantine/core";
-import { IconCheck, IconCube, IconForbid2, IconHistory, IconListDetails, IconNetwork, IconServer2, IconSettings, IconShield, IconWifi, IconX } from "@tabler/icons-react";
+import { IconCheck, IconCube, IconForbid2, IconHistory, IconListDetails, IconNetwork, IconServer2, IconSettings, IconShield, IconUser, IconWifi, IconX } from "@tabler/icons-react";
 import { forwardRef, useEffect, useState } from "react";
 import Editor from "@monaco-editor/react";
 import { getOSLogo, getVendorLogo } from "@/lib/logo";
@@ -136,7 +136,7 @@ export default function CreateInstance({nodes, imageServers}: {nodes: Node[], im
     return (
         <>
             <Button my="auto" onClick={() => setCreatingInstance(true)} sx={{ marginLeft: "auto" }}>Create Instance</Button>
-            <Modal size="xl" overlayProps={{
+            <Modal size="85%" overlayProps={{
                 color: theme.colorScheme === 'dark' ? theme.colors.dark[9] : theme.colors.gray[2],
                 opacity: 0.55,
                 blur: 3,
@@ -149,6 +149,7 @@ export default function CreateInstance({nodes, imageServers}: {nodes: Node[], im
                         <Tabs.Tab icon={<IconForbid2 size="0.8rem" />} value="limits">Limits</Tabs.Tab>
                         <Tabs.Tab icon={<IconShield size="0.8rem" />} value="security">Security</Tabs.Tab>
                         <Tabs.Tab icon={<IconHistory size="0.8rem" />} value="snapshots">Snapshots</Tabs.Tab>
+                        <Tabs.Tab icon={<IconUser size="0.8rem" />} value="users">Users</Tabs.Tab>
                         <Tabs.Tab icon={<IconSettings size="0.8rem" />} value="advanced">Advanced</Tabs.Tab>
                     </Tabs.List>
 
@@ -340,6 +341,9 @@ export default function CreateInstance({nodes, imageServers}: {nodes: Node[], im
                             setInstanceConfig(newConfig);
                         }} mt="sm" label="Snapshot Expiry" placeholder="3d" />
                     </Tabs.Panel>
+                    <Tabs.Panel value="users">
+                        <p>Coming Soon</p>
+                        </Tabs.Panel>
                     <Tabs.Panel value="advanced">
                             <Editor onChange={(e) => {
                         console.log(e)
